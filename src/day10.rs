@@ -48,7 +48,7 @@ fn part1() {
 fn knot_hash<I: Iterator<Item = u8> + Clone>(data: I) -> String {
     const SUFFIX: [u8; 5] = [17, 31, 73, 47, 23];
     //
-    iter::repeat(data.clone().chain(SUFFIX.iter().cloned()))
+    iter::repeat(data.chain(SUFFIX.iter().cloned()))
         .take(64)
         .flatten()
         .enumerate()
