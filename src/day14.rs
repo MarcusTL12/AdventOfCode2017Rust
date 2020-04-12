@@ -71,15 +71,6 @@ fn part1() {
     println!("{}", ans);
 }
 
-// fn _render_grid(grid: &Vec<BitVec<Msb0, u8>>) {
-//     for row in grid {
-//         for &cell in row {
-//             print!("{}", if cell { '#' } else { '.' });
-//         }
-//         println!();
-//     }
-// }
-
 fn dfs(
     grid: &Vec<BitVec<Msb0, u8>>,
     visited: &mut HashSet<Complex<i32>>,
