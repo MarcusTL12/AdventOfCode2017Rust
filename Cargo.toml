@@ -11,3 +11,4 @@ itertools = ""
 num = ""
 arrayvec = ""
 bitvec = ""
+vec_linked_list = {git = "https://github.com/MarcusTL12/VecLinkedList_Rust", branch = "Dev"}

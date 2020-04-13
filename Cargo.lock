@@ -8,6 +8,7 @@ dependencies = [
  "bitvec",
  "itertools",
  "num",
+ "vec_linked_list",
 ]
 
 [[package]]
@@ -129,3 +130,8 @@ name = "radium"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "def50a86306165861203e7f84ecffbbdfdea79f0e51039b33de1e952358c47ac"
+
+[[package]]
+name = "vec_linked_list"
+version = "0.1.0"
+source = "git+https://github.com/MarcusTL12/VecLinkedList_Rust?branch=Dev#1606998b5069f53d060df17b19265bfa9b38d7e6"
