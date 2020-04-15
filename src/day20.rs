@@ -98,7 +98,7 @@ fn remove_collisions(particles: &mut Vec<[[i32; 3]; 3]>) -> bool {
     let ans = to_be_removed.len() > 0;
     //
     for i in to_be_removed.into_iter().sorted().rev() {
-        particles.remove(i);
+        particles.swap_remove(i);
     }
     //
     ans
