@@ -4,6 +4,7 @@ use std::{
 };
 
 use arrayvec::ArrayVec;
+use primes::is_prime;
 
 pub const PARTS: [fn(); 2] = [part1, part2];
 
@@ -36,7 +37,7 @@ fn compile_code(filename: &str) -> Vec<Ins> {
         .lines()
         .map(|l| l.unwrap())
         .map(
-            |l| match l.split(' ').collect::<ArrayVec<[_; 3]>>().as_slice() {
+            |l| match l.split(' ').collect::<ArrayVec<_, 3>>().as_slice() {
                 ["set", x, y] => Ins::Set(decode_arg(x), decode_arg(y)),
                 ["sub", x, y] => Ins::Sub(decode_arg(x), decode_arg(y)),
                 ["mul", x, y] => Ins::Mul(decode_arg(x), decode_arg(y)),
@@ -88,10 +89,12 @@ fn part1() {
 }
 
 fn part2() {
-    done_by_hand();
+    let ans = (106700..=123700).step_by(17).filter(|&x| !is_prime(x)).count();
+
+    println!("{}", ans);
 }
 
-fn done_by_hand() {
+fn _done_by_hand() {
     let mut b = 106700;
     let c = 123700;
     let mut d;

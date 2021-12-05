@@ -97,7 +97,7 @@ fn part1() {
                 dir *= match [dir * IM, dir * (-IM)]
                     .iter()
                     .map(|&d| get_cell(&map, d + pos))
-                    .collect::<ArrayVec<[_; 2]>>()
+                    .collect::<ArrayVec<_, 2>>()
                     .as_slice()
                 {
                     [Cell::Horizontal, _] if dir == IM || dir == -IM => IM,
@@ -146,7 +146,7 @@ fn part2() {
                 dir *= match [dir * IM, dir * (-IM)]
                     .iter()
                     .map(|&d| get_cell(&map, d + pos))
-                    .collect::<ArrayVec<[_; 2]>>()
+                    .collect::<ArrayVec<_, 2>>()
                     .as_slice()
                 {
                     [Cell::Horizontal, _] if dir == IM || dir == -IM => IM,

@@ -15,7 +15,7 @@ fn part1() {
             if let [a, b] = l
                 .split(": ")
                 .map(|x| x.parse().unwrap())
-                .collect::<ArrayVec<[u32; 2]>>()
+                .collect::<ArrayVec<u32, 2>>()
                 .as_slice()
             {
                 (*a, *b)
@@ -37,7 +37,7 @@ fn part2() {
                 if let [a, b] = l
                     .split(": ")
                     .map(|x| x.parse().unwrap())
-                    .collect::<ArrayVec<[u32; 2]>>()
+                    .collect::<ArrayVec<u32, 2>>()
                     .as_slice()
                 {
                     (*a, *b)

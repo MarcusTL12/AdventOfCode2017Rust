@@ -46,7 +46,7 @@ fn load_input(filename: &str) -> Vec<[[i32; 3]; 3]> {
             if let Some(c) = REG.captures(&l) {
                 let vals = (1..10)
                     .map(|i| c[i].parse().unwrap())
-                    .collect::<ArrayVec<[i32; 9]>>()
+                    .collect::<ArrayVec<i32, 9>>()
                     .into_inner()
                     .unwrap();
                 //
@@ -55,11 +55,11 @@ fn load_input(filename: &str) -> Vec<[[i32; 3]; 3]> {
                         vals[i * 3..i * 3 + 3]
                             .iter()
                             .cloned()
-                            .collect::<ArrayVec<[_; 3]>>()
+                            .collect::<ArrayVec<_, 3>>()
                             .into_inner()
                             .unwrap()
                     })
-                    .collect::<ArrayVec<[_; 3]>>()
+                    .collect::<ArrayVec<_, 3>>()
                     .into_inner()
                     .unwrap()
             } else {

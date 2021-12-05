@@ -28,7 +28,7 @@ fn part1() {
             .map(|l| l.unwrap())
             .map(|l| {
                 if let [_, b] =
-                    l.split(" <-> ").collect::<ArrayVec<[_; 2]>>().as_slice()
+                    l.split(" <-> ").collect::<ArrayVec<_, 2>>().as_slice()
                 {
                     b.split(", ").map(|n| n.parse().unwrap()).collect()
                 } else {
@@ -51,7 +51,7 @@ fn part2() {
             .map(|l| l.unwrap())
             .map(|l| {
                 if let [_, b] =
-                    l.split(" <-> ").collect::<ArrayVec<[_; 2]>>().as_slice()
+                    l.split(" <-> ").collect::<ArrayVec<_, 2>>().as_slice()
                 {
                     b.split(", ").map(|n| n.parse().unwrap()).collect()
                 } else {

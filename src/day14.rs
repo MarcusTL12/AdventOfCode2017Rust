@@ -62,7 +62,7 @@ fn part1() {
             knot_hash(buf.iter().cloned(), &mut buf2);
             //
             let v = BitVec::<Msb0, u8>::from_vec(buf2);
-            s += v.iter().filter(|&&x| x).count();
+            s += v.iter().filter(|x| **x).count();
             //
             (buf, v.into_vec(), s)
         },

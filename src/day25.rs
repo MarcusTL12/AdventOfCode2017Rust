@@ -68,7 +68,7 @@ fn load_input(filename: &str) -> (usize, usize, Vec<[(bool, bool, usize); 2]>) {
                             .unwrap(),
                     )
                 })
-                .collect::<ArrayVec<[_; 2]>>()
+                .collect::<ArrayVec<_, 2>>()
                 .into_inner()
                 .unwrap()
         })

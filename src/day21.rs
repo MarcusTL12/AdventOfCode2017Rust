@@ -10,7 +10,7 @@ use lazy_static::*;
 
 pub const PARTS: [fn(); 2] = [part1, part2];
 
-fn decode(l: &str) -> ArrayVec<[ArrayVec<[bool; 4]>; 4]> {
+fn decode(l: &str) -> ArrayVec<ArrayVec<bool, 4>, 4> {
     l.split('/')
         .map(|r| {
             r.chars()
@@ -24,7 +24,7 @@ fn decode(l: &str) -> ArrayVec<[ArrayVec<[bool; 4]>; 4]> {
         .collect()
 }
 
-fn _render_square(sq: &ArrayVec<[ArrayVec<[bool; 4]>; 4]>) {
+fn _render_square(sq: &ArrayVec<ArrayVec<bool, 4>, 4>) {
     for r in sq {
         for &c in r {
             print!("{}", if c { '#' } else { '.' });
@@ -43,8 +43,8 @@ fn _render_square_vec(sq: &Vec<Vec<bool>>) {
 }
 
 fn symmetries(
-    sq: &ArrayVec<[ArrayVec<[bool; 4]>; 4]>,
-) -> [ArrayVec<[ArrayVec<[bool; 4]>; 4]>; 8] {
+    sq: &ArrayVec<ArrayVec<bool, 4>, 4>,
+) -> [ArrayVec<ArrayVec<bool, 4>, 4>; 8] {
     let l = sq.len();
     [
         sq.clone(),
@@ -73,15 +73,15 @@ fn symmetries(
 fn load_input(
     filename: &str,
 ) -> HashMap<
-    ArrayVec<[ArrayVec<[bool; 4]>; 4]>,
-    ArrayVec<[ArrayVec<[bool; 4]>; 4]>,
+    ArrayVec<ArrayVec<bool, 4>, 4>,
+    ArrayVec<ArrayVec<bool, 4>, 4>,
 > {
     BufReader::new(File::open(filename).unwrap())
         .lines()
         .map(|l| l.unwrap())
         .flat_map(|l| {
             if let [a, b] =
-                l.split(" => ").collect::<ArrayVec<[_; 2]>>().as_slice()
+                l.split(" => ").collect::<ArrayVec<_, 2>>().as_slice()
             {
                 let a = decode(a);
                 //
@@ -99,8 +99,8 @@ fn load_input(
 
 fn make_next(
     rules: &HashMap<
-        ArrayVec<[ArrayVec<[bool; 4]>; 4]>,
-        ArrayVec<[ArrayVec<[bool; 4]>; 4]>,
+        ArrayVec<ArrayVec<bool, 4>, 4>,
+        ArrayVec<ArrayVec<bool, 4>, 4>,
     >,
     sq: &Vec<Vec<bool>>,
 ) -> Vec<Vec<bool>> {
@@ -111,7 +111,7 @@ fn make_next(
         //
         for i in 0..l / 2 {
             for j in 0..l / 2 {
-                let sub_square: ArrayVec<[ArrayVec<[_; 4]>; 4]> = (0..2)
+                let sub_square: ArrayVec<ArrayVec<_, 4>, 4> = (0..2)
                     .map(|y| (0..2).map(|x| sq[2 * i + y][2 * j + x]).collect())
                     .collect();
                 //
@@ -136,7 +136,7 @@ fn make_next(
         //
         for i in 0..l / 3 {
             for j in 0..l / 3 {
-                let sub_square: ArrayVec<[ArrayVec<[_; 4]>; 4]> = (0..3)
+                let sub_square: ArrayVec<ArrayVec<_, 4>, 4> = (0..3)
                     .map(|y| (0..3).map(|x| sq[3 * i + y][3 * j + x]).collect())
                     .collect();
                 //

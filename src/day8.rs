@@ -13,7 +13,7 @@ fn part1() {
         .lines()
         .map(|l| l.unwrap())
         .fold(HashMap::new(), |mut registers, l| {
-            match l.split(' ').collect::<ArrayVec<[_; 7]>>().as_slice() {
+            match l.split(' ').collect::<ArrayVec<_, 7>>().as_slice() {
                 [a, inc, n, "if", b, cond, m] => {
                     let b = registers.get(*b).cloned().unwrap_or(0);
                     let m = m.parse::<i32>().unwrap();
@@ -59,7 +59,7 @@ fn part2() {
         .lines()
         .map(|l| l.unwrap())
         .fold((HashMap::new(), 0), |(mut registers, mut maxval), l| {
-            match l.split(' ').collect::<ArrayVec<[_; 7]>>().as_slice() {
+            match l.split(' ').collect::<ArrayVec<_, 7>>().as_slice() {
                 [a, inc, n, "if", b, cond, m] => {
                     let b = registers.get(*b).cloned().unwrap_or(0);
                     let m = m.parse::<i32>().unwrap();

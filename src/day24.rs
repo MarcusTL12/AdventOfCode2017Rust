@@ -17,7 +17,7 @@ fn load_input(filename: &str) -> Vec<[Int; 2]> {
         .map(|l| {
             l.split('/')
                 .map(|n| n.parse().unwrap())
-                .collect::<ArrayVec<[_; 2]>>()
+                .collect::<ArrayVec<_, 2>>()
                 .into_inner()
                 .unwrap()
         })

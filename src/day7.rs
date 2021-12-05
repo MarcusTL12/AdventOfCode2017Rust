@@ -15,7 +15,7 @@ fn findroot(filename: &str) -> String {
         .lines()
         .map(|l| l.unwrap())
         .map(|l| {
-            match l.split(" -> ").collect::<ArrayVec<[_; 2]>>().as_slice() {
+            match l.split(" -> ").collect::<ArrayVec<_, 2>>().as_slice() {
                 [a] => a,
                 [a, b] => {
                     inside.extend(b.split(", ").map(|s| s.to_owned()));
@@ -106,7 +106,7 @@ fn part2() {
             .map(|l| {
                 let temp = match l
                     .split(" -> ")
-                    .collect::<ArrayVec<[_; 2]>>()
+                    .collect::<ArrayVec<_, 2>>()
                     .as_slice()
                 {
                     [a] => a,
@@ -122,7 +122,7 @@ fn part2() {
                     _ => unreachable!(),
                 }
                 .split(' ')
-                .collect::<ArrayVec<[_; 2]>>();
+                .collect::<ArrayVec<_, 2>>();
                 let a = temp[0].to_owned();
                 let b = temp[1]
                     .chars()

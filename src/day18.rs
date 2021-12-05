@@ -47,7 +47,7 @@ fn compile_code(filename: &str) -> (Vec<Ins>, usize, usize) {
             .lines()
             .map(|l| l.unwrap())
             .map(|l| {
-                match l.split(' ').collect::<ArrayVec<[_; 3]>>().as_slice() {
+                match l.split(' ').collect::<ArrayVec<_, 3>>().as_slice() {
                     ["snd", x] => Ins::Snd(decode_arg(&mut registers, x)),
                     ["set", x, y] => Ins::Set(
                         decode_arg(&mut registers, x),

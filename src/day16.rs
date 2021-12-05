@@ -29,7 +29,7 @@ fn part1() {
                         if let [a, b] = c[1..]
                             .split('/')
                             .map(|n| n.parse().unwrap())
-                            .collect::<ArrayVec<[_; 2]>>()
+                            .collect::<ArrayVec<_, 2>>()
                             .as_slice()
                         {
                             buf.swap(*a, *b);
@@ -38,7 +38,7 @@ fn part1() {
                     "p" => {
                         if let [a, _, b] = c[1..]
                             .chars()
-                            .collect::<ArrayVec<[_; 3]>>()
+                            .collect::<ArrayVec<_, 3>>()
                             .as_slice()
                         {
                             let a = buf
@@ -89,7 +89,7 @@ fn compile_moves(filename: &str) -> Vec<Move> {
                 if let [a, b] = c[1..]
                     .split('/')
                     .map(|n| n.parse().unwrap())
-                    .collect::<ArrayVec<[_; 2]>>()
+                    .collect::<ArrayVec<_, 2>>()
                     .as_slice()
                 {
                     Move::X(*a, *b)
@@ -99,7 +99,7 @@ fn compile_moves(filename: &str) -> Vec<Move> {
             }
             "p" => {
                 if let [a, _, b] =
-                    c[1..].chars().collect::<ArrayVec<[_; 3]>>().as_slice()
+                    c[1..].chars().collect::<ArrayVec<_, 3>>().as_slice()
                 {
                     Move::P(*a as u8, *b as u8)
                 } else {
@@ -150,7 +150,7 @@ fn part2() {
                     })
                     .iter()
                     .cloned()
-                    .collect::<ArrayVec<[_; 16]>>()
+                    .collect::<ArrayVec<_, 16>>()
                     .into_inner()
                     .unwrap(),
             )
